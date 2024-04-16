@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700,900|Muli:300,400,500,600,700,800,900&display=swap");
 
-
-
+/* 
+   Primary color : #0174BE
+ */
 
 .white-bg {
 	background: #ffffff
@@ -5696,7 +5697,7 @@ del {
 }
 
 .slicknav_menu .slicknav_icon-bar {
-	background-color: #fb246a !important
+	background-color: #0174BE !important
 }
 
 .header-sticky.sticky-bar.sticky .header-btn .get-btn {
@@ -5709,7 +5710,7 @@ del {
 
 .slicknav_menu .slicknav_nav a:hover {
 	background: transparent;
-	color: #fb246a
+	color: #0174BE
 }
 
 .slicknav_menu {
@@ -5880,11 +5881,11 @@ form.search-box .input-form {
 	position: relative
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
 	form.search-box .input-form {
 		width: 100%
 	}
-}
+} */
 
 form.search-box .input-form input {
 	height: 70px;
@@ -5898,28 +5899,28 @@ form.search-box .input-form input {
 	position: relative
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
 	form.search-box .input-form input {
 		margin-bottom: 20px
 	}
-}
+} */
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+/* @media only screen and (min-width: 576px) and (max-width: 767px) {
 	form.search-box .input-form input {
 		padding: 9px 33px 9px 25px;
 		margin-bottom: 20px
 	}
-}
+} */
 
 form.search-box .input-form input::placeholder {
 	color: #616875
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
 	form.search-box .input-form input::placeholder {
 		font-size: 13px
 	}
-}
+} */
 
 form.search-box .input-form::before {
 	position: absolute;
@@ -5933,27 +5934,27 @@ form.search-box .input-form::before {
 	transform: translateY(-50%)
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+/* @media only screen and (min-width: 576px) and (max-width: 767px) {
 	form.search-box .input-form::before {
 		display: none
 	}
-}
+} */
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
 	form.search-box .input-form::before {
 		display: none
 	}
-}
+} */
 
 form.search-box .select-form {
 	width: 34%
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
 	form.search-box .select-form {
 		width: 100%
 	}
-}
+} */
 
 form.search-box .select-form .nice-select {
 	width: 100%;
@@ -5966,19 +5967,19 @@ form.search-box .select-form .nice-select {
 	border: 0
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
 	form.search-box .select-form .nice-select {
 		margin-bottom: 20px;
 		padding-left: 25px
 	}
-}
+} */
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+/* @media only screen and (min-width: 576px) and (max-width: 767px) {
 	form.search-box .select-form .nice-select {
 		margin-bottom: 20px;
 		padding-left: 25px
 	}
-}
+} */
 
 form.search-box .select-form .nice-select .list {
 	width: 100%
@@ -6003,11 +6004,11 @@ form.search-box .search-form {
 	width: 21%
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
 	form.search-box .search-form {
 		width: 100%
 	}
-}
+} */
 
 form.search-box .search-form a {
 	width: 100%;
@@ -7571,3 +7572,91 @@ form.search-box .search-form a {
 	background: #242b5e;
 	color: #fff
 }
+
+.header-text{
+	background-color: white;
+	margin-top: 100px;
+}
+
+@media only screen and (max-width: 600px) {
+
+	.header-text{
+		background-color: white;
+		margin-top: 50px;
+	}
+
+	form.search-box{
+		display: block;
+		justify-content: space-between
+	}
+
+	.input-form{
+		display: inline;
+	}
+
+	.select-form{
+		display: inline;
+	}
+
+	.logo_img{
+		width: 150px;
+		height: 70px;
+	}
+
+	.slider-area .hero__caption h1 {
+		font-size: 50px
+	}
+
+	.search-form{
+		width: auto;
+		position: relative;
+		display: inline;
+	
+	}
+	/* form.search-box {
+		box-shadow: 0px 6px 29px 0px rgba(36, 43, 94, 0.08);
+		display: block;
+		justify-content: space-between
+	}
+
+
+	form .input-form{
+		width: auto;
+		position: relative;
+		display: inline;
+	}
+
+
+	.select-form{
+		width: auto;
+		position: relative;
+		display: inline;
+	}
+
+	.search-form{
+		width: auto;
+		position: relative;
+		display: inline;
+	
+	}
+
+	form.search-box .input-form::before {
+		position: absolute;
+		background: none;
+		z-index: 1;
+		transform: translateY(-50%)
+	} */
+
+
+	/* form.search-box .input-form input {
+		height: 70px;
+		width: 100%;
+		color: #777777;
+		font-size: 18px;
+		font-weight: 400;
+		padding: 9px 33px 9px 32px;
+		border: none;
+		border-radius: 0px;
+		position: relative
+	} */
+  }
