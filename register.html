@@ -10,18 +10,18 @@
 		<link rel="shortcut icon" type="image/x-icon" href="https://jobs.skyblue.co.in/assets/img/favicon.ico">
 
 		<!-- CSS here -->
-            <link rel="stylesheet" href="https://jobs.skyblue.co.in/assets/css/bootstrap.min.css">
-            <link rel="stylesheet" href="https://jobs.skyblue.co.in/assets/css/owl.carousel.min.css">
-            <link rel="stylesheet" href="https://jobs.skyblue.co.in/assets/css/flaticon.css">
-            <link rel="stylesheet" href="https://jobs.skyblue.co.in/assets/css/price_rangs.css">
-            <link rel="stylesheet" href="https://jobs.skyblue.co.in/assets/css/slicknav.css">
-            <link rel="stylesheet" href="https://jobs.skyblue.co.in/assets/css/animate.min.css">
-            <link rel="stylesheet" href="https://jobs.skyblue.co.in/assets/css/magnific-popup.css">
-            <link rel="stylesheet" href="https://jobs.skyblue.co.in/assets/css/fontawesome-all.min.css">
-            <link rel="stylesheet" href="https://jobs.skyblue.co.in/assets/css/themify-icons.css">
-            <link rel="stylesheet" href="https://jobs.skyblue.co.in/assets/css/slick.css">
-            <link rel="stylesheet" href="https://jobs.skyblue.co.in/assets/css/nice-select.css">
-            <link rel = "stylesheet" type = "text/css" href = "style.css">
+            <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+            <link rel="stylesheet" href="assets/css/flaticon.css">
+            <link rel="stylesheet" href="assets/css/price_rangs.css">
+            <link rel="stylesheet" href="assets/css/slicknav.css">
+            <link rel="stylesheet" href="assets/css/animate.min.css">
+            <link rel="stylesheet" href="assets/css/magnific-popup.css">
+            <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+            <link rel="stylesheet" href="assets/css/themify-icons.css">
+            <link rel="stylesheet" href="assets/css/slick.css">
+            <link rel="stylesheet" href="assets/css/nice-select.css">
+            <link rel = "stylesheet" type = "text/css" href = "assets/css/login.css">
             <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
    </head>
 
@@ -45,8 +45,8 @@
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
                                             <li><a href="index.html">Home</a></li>
-                                            <li><a href="job_listing.html">Price </a></li>
-                                            <li><a href="about.html">Offer</a></li>
+                                            <li><a href="../price.html">Price </a></li>
+                                            <li><a href="offer.html">Offer</a></li>
                                          
                                         </ul>
                                     </nav>
@@ -68,40 +68,7 @@
         <!-- Header End -->
     </header>
 
-    <div id = "frm">
-        <h3 class="login">Login</h3>
-        <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">
-           <p>
-           <!-- <p> UserName: </p> -->
-           <input type = "text" placeholder="Email" id ="user" name  = "user" class="edit"/></p>
-           <p>
-           <!-- <p> Password: </p> -->
-           <input type = "password" placeholder="Password" id ="pass" name  = "pass" class="edit" />
-           </p>
-           <p>
-              <input type =  "submit" id = "btn" value = "Login" />
-           </p>
-        </form>
-     </div>
-     <script>
-   function validation() {
-     var id = document.f1.user.value;
-     var ps = document.f1.pass.value;
-     if (id.length == "" && ps.length == "") {
-        alert("User Name and Password fields are empty");
-        return false;
-     } else {
-        if (id.length == "") {
-           alert("User Name is empty");
-           return false;
-        }
-        if (ps.length == "") {
-           alert("Password field is empty");
-           return false;
-        }
-     }
-  } 
-     </script>
+
   
   <!-- JS here -->
 	

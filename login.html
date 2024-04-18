@@ -1,0 +1,160 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+         <title>Skyblue Job Search | Requirement | Hiring </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" type="image/x-icon" href="https://jobs.skyblue.co.in/assets/img/favicon.ico">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+            <link rel="stylesheet" href="assets/css/flaticon.css">
+            <link rel="stylesheet" href="assets/css/price_rangs.css">
+            <link rel="stylesheet" href="assets/css/slicknav.css">
+            <link rel="stylesheet" href="assets/css/animate.min.css">
+            <link rel="stylesheet" href="assets/css/magnific-popup.css">
+            <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+            <link rel="stylesheet" href="assets/css/themify-icons.css">
+            <link rel="stylesheet" href="assets/css/slick.css">
+            <link rel="stylesheet" href="assets/css/nice-select.css">
+            <link rel = "stylesheet" type = "text/css" href = "assets/css/login.css">
+            <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+   </head>
+
+   <body>
+    <header>
+        <!-- Header Start -->
+       <div class="header-area header-transparrent">
+           <div class="headder-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-2">
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href="https://jobs.skyblue.co.in/"><img class="logo_img" src="https://jobs.skyblue.co.in/images/logo/logo_3.jpg" alt=""></a>
+                            </div>  
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <div class="menu-wrapper">
+                                <!-- Main-menu -->
+                                <div class="main-menu">
+                                    <nav class="d-none d-lg-block">
+                                        <ul id="navigation">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="../price.html">Price </a></li>
+                                            <li><a href="offer.html">Offer</a></li>
+                                         
+                                        </ul>
+                                    </nav>
+                                </div>          
+                                <!-- Header-btn -->
+                                <div class="header-btn d-none f-right d-lg-block">
+                                  <p>For support contact <p style="color: #0174BE;"> +91 8940570614</p></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+       </div>
+        <!-- Header End -->
+    </header>
+
+    <div id = "frm">
+        <h3 class="login">Login</h3>
+        <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">
+           <p>
+           <!-- <p> UserName: </p> -->
+           <input type = "text" placeholder="Email" id ="user" name  = "user" class="edit"/></p>
+           <p>
+           <!-- <p> Password: </p> -->
+           <input type = "password" placeholder="Password" id ="pass" name  = "pass" class="edit" />
+           </p>
+           <p>
+              <input type =  "submit" id = "btn" value = "Login" />
+           </p>
+
+           <p>
+            <a href="register.html"> <input  value = "Register"  class="register-btn"/>  </a> 
+         </p>
+
+        </form>
+     </div>
+
+     <script>
+
+function myFunction() {
+  var x = document.getElementById("frm");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+   function validation() {
+     var id = document.f1.user.value;
+     var ps = document.f1.pass.value;
+     if (id.length == "" && ps.length == "") {
+        alert("User Name and Password fields are empty");
+        return false;
+     } else {
+        if (id.length == "") {
+           alert("User Name is empty");
+           return false;
+        }
+        if (ps.length == "") {
+           alert("Password field is empty");
+           return false;
+        }
+     }
+  } 
+     </script>
+  
+  <!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="https://jobs.skyblue.co.in/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="https://jobs.skyblue.co.in/assets/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="https://jobs.skyblue.co.in/assets/js/popper.min.js"></script>
+        <script src="https://jobs.skyblue.co.in/assets/js/bootstrap.min.js"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="https://jobs.skyblue.co.in/assets/js/jquery.slicknav.min.js"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="https://jobs.skyblue.co.in/assets/js/owl.carousel.min.js"></script>
+        <script src="https://jobs.skyblue.co.in/assets/js/slick.min.js"></script>
+        <script src="https://jobs.skyblue.co.in/assets/js/price_rangs.js"></script>
+        
+		<!-- One Page, Animated-HeadLin -->
+        <script src="https://jobs.skyblue.co.in/assets/js/wow.min.js"></script>
+		<script src="https://jobs.skyblue.co.in/assets/js/animated.headline.js"></script>
+        <script src="https://jobs.skyblue.co.in/assets/js/jquery.magnific-popup.js"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="https://jobs.skyblue.co.in/assets/js/jquery.scrollUp.min.js"></script>
+        <script src="https://jobs.skyblue.co.in/assets/js/jquery.nice-select.min.js"></script>
+		<script src="https://jobs.skyblue.co.in/assets/js/jquery.sticky.js"></script>
+        
+        <!-- contact js -->
+        <script src="https://jobs.skyblue.co.in/assets/js/contact.js"></script>
+        <script src="https://jobs.skyblue.co.in/assets/js/jquery.form.js"></script>
+        <script src="https://jobs.skyblue.co.in/assets/js/jquery.validate.min.js"></script>
+        <script src="https://jobs.skyblue.co.in/assets/js/mail-script.js"></script>
+        <script src="https://jobs.skyblue.co.in/assets/js/jquery.ajaxchimp.min.js"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="https://jobs.skyblue.co.in/assets/js/plugins.js"></script>
+        <script src="https://jobs.skyblue.co.in/assets/js/main.js"></script>
+        
+    </body>
+</html>
