@@ -23,6 +23,8 @@
             <link rel="stylesheet" href="assets/css/nice-select.css">
             <link rel="stylesheet" href="assets/css/style.css">
             <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+            <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
    </head>
 
    <body>
@@ -54,30 +56,17 @@
                             <div class="menu-wrapper">
                                 <!-- Main-menu -->
                                 <div class="main-menu">
-                                    <nav class="d-none d-lg-block">
-                                        <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="#">Services</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.html">job Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="about.html">Price</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="#">Employer</a>
-                                                <ul class="submenu">
-                                                    <li><a href="login.html">Login</a></li>
-                                                    <li><a href="single-blog.html">Sign up</a></li>
-                                                    <li><a href="elements.html">Price</a></li>
-                                                    <li><a href="job_details.html">Package</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </nav>
+                                    <!--Navigation bar-->
+                                    <div id="nav-placeholder">
+                                    </div>
+                                    
+                                    <script>
+                                      $(function()
+                                      {
+                                          $("#nav-placeholder").load("nav.html");
+                                      });
+                                    </script>
+                                    <!--end of Navigation bar-->
                                 </div>          
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-right d-lg-block">
