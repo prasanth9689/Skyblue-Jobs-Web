@@ -26,6 +26,7 @@
    </head>
 
    <body>
+    
     <header>
         <!-- Header Start -->
        <div class="header-area header-transparrent">
@@ -38,23 +39,34 @@
                                 <a href="https://jobs.skyblue.co.in/"><img class="logo_img" src="https://jobs.skyblue.co.in/images/logo/logo_3.jpg" alt=""></a>
                             </div>  
                         </div>
+
+
                         <div class="col-lg-9 col-md-9">
                             <div class="menu-wrapper">
                                 <!-- Main-menu -->
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
+                                            <!-- <li><a href="index.html">Home</a></li>
                                             <li><a href="../price.html">Price </a></li>
-                                            <li><a href="offer.html">Offer</a></li>
+                                            <li><a href="offer.html">Offer</a></li> -->
                                          
                                         </ul>
                                     </nav>
                                 </div>          
                                 <!-- Header-btn -->
-                                <div class="header-btn d-none f-right d-lg-block">
-                                  <p>For support contact <p style="color: #0174BE;"> +91 8940570614</p></p>
-                                </div>
+                                <!-- <div class="header-btn d-none f-right d-lg-block">
+                                  <p>For support contact
+                                     <p style="color: #0174BE;"> +91 8940570614</p>
+                                    </p>
+                                </div> -->
+
+                                <div class="phone-support-text" style="line-height: 1.5em;
+                                height: 3em;
+                                overflow: hidden;">
+                                  For support contact
+                                       <p style="color: #0174BE; margin-top: 5px;"> +91 8940570614</p>
+                                  </div>
                             </div>
                         </div>
                         <!-- Mobile Menu -->
@@ -70,54 +82,67 @@
 
     <div id = "frm">
         <h3 class="login">Login</h3>
-        <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">
-           <p>
-           <!-- <p> UserName: </p> -->
-           <input type = "text" placeholder="Email" id ="user" name  = "user" class="edit"/></p>
-           <p>
-           <!-- <p> Password: </p> -->
-           <input type = "password" placeholder="Password" id ="pass" name  = "pass" class="edit" />
-           </p>
-           <p>
-              <input type =  "submit" id = "btn" value = "Login" />
-           </p>
 
-           <p>
-            <a href="register.html"> <input  value = "Register"  class="register-btn"/>  </a> 
-         </p>
-
+        <form class="form" name="form">
+            <p>
+                <input name="username" id="username" type="text" placeholder="username" class="edit" autocomplete="off">
+            </p>
+            
+            <p>
+                <input name="password" id="password" type="password" placeholder="password" class="edit">
+            </p>
+            
+            <p>
+                <button type="submit" id="btn">Submit</button>
+            </p>
         </form>
      </div>
 
+
      <script>
 
-function myFunction() {
-  var x = document.getElementById("frm");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+// document.getElementById("username").className = document.getElementById("username").className + " error";  
 
-   function validation() {
-     var id = document.f1.user.value;
-     var ps = document.f1.pass.value;
-     if (id.length == "" && ps.length == "") {
-        alert("User Name and Password fields are empty");
-        return false;
-     } else {
-        if (id.length == "") {
-           alert("User Name is empty");
-           return false;
-        }
-        if (ps.length == "") {
-           alert("Password field is empty");
-           return false;
+
+        const formEl = document.querySelector('.form');
+
+        formEl.addEventListener('submit', event => {
+            event.preventDefault();
+
+            var id = document.form.username.value;
+            var ps = document.form.username.value;
+
+            if (id.length == "" && ps.length == "") {
+                  document.getElementById("username").className = document.getElementById("username").className + " error";  // this adds the error class
+                  document.getElementById("password").className = document.getElementById("password").className + " error";  
+                  
+                  var textbox = document.getElementById("username");
+                  textbox.focus();
+                  textbox.scrollIntoView();
+                  return false; 
+           }else {
+                    if (id.length == "") {
+                            document.getElementById("username").className = document.getElementById("username").className + " error";  
+                            return false;
+                    }
+                    if (ps.length == "") {
+                            document.getElementById("password").className = document.getElementById("password").className + " error";  
+
+                            var textbox = document.getElementById("password");
+                            textbox.focus();
+                            textbox.scrollIntoView();
+                            return false;
         }
      }
-  } 
+
+
+            const formData = new FormData(formEl);
+            const data = Object.fromEntries(formData);
+
+            console.log(data);
+        });
      </script>
+
   
   <!-- JS here -->
 	
