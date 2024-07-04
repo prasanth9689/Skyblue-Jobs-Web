@@ -263,53 +263,6 @@ li {
 	transition: 0.5s
 }
 
-.btn {
-	background: #0174BE;
-	-moz-user-select: none;
-	text-transform: capitalize;
-	color: #fff;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 14px;
-	font-weight: 500;
-	letter-spacing: 1px;
-	line-height: 0;
-	margin-bottom: 0;
-	padding: 27px 44px;
-	border-radius: 0px;
-	margin: 10px;
-	cursor: pointer;
-	transition: color 0.4s linear;
-	position: relative;
-	z-index: 1;
-	border: 0;
-	overflow: hidden;
-	margin: 0
-}
-
-.btn::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 101%;
-	height: 101%;
-	background: #0174BE;
-	z-index: 1;
-	border-radius: 5px;
-	transition: transform 0.5s;
-	transition-timing-function: ease;
-	transform-origin: 0 0;
-	transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
-	transform: scaleX(0);
-	border-radius: 0
-}
-
-.btn:hover::before {
-	transform: scaleX(1);
-	color: #fff !important;
-	z-index: -1
-}
 
 .head-btn2 {
 	background: none;
@@ -346,11 +299,6 @@ li {
 	color: #fff
 }
 
-.btn.focus,
-.btn:focus {
-	outline: 0;
-	box-shadow: none
-}
 
 .border-btn {
 	border: 1px solid #fb246a;
@@ -806,53 +754,8 @@ h1{
 	background: #ff3500
 }
 
-.btn {
-	background: #0174BE;
-	-moz-user-select: none;
-	text-transform: capitalize;
-	color: #fff;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 14px;
-	font-weight: 500;
-	letter-spacing: 1px;
-	line-height: 0;
-	margin-bottom: 0;
-	padding: 27px 44px;
-	border-radius: 0px;
-	margin: 10px;
-	cursor: pointer;
-	transition: color 0.4s linear;
-	position: relative;
-	z-index: 1;
-	border: 0;
-	overflow: hidden;
-	margin: 0
-}
 
-.btn::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 101%;
-	height: 101%;
-	background: #0174BE;
-	z-index: 1;
-	border-radius: 5px;
-	transition: transform 0.5s;
-	transition-timing-function: ease;
-	transform-origin: 0 0;
-	transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
-	transform: scaleX(0);
-	border-radius: 0
-}
 
-.btn:hover::before {
-	transform: scaleX(1);
-	color: #fff !important;
-	z-index: -1
-}
 
 .head-btn2 {
 	background: none;
@@ -909,8 +812,8 @@ h1{
 	margin-right: 200px;
 	padding-left: 20px;
 	padding-right: 20px;
-	padding-top: 40px;
-	padding-bottom: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .edit{
@@ -934,7 +837,21 @@ h1{
     display: block;
     margin: auto;
     border-radius:10px;
+	margin-top: 25px;
+	margin-bottom: 30px;
+
+	box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24); 
+	cursor: pointer; 
+	outline: none; 
+	transition: 0.2s all; 
 }
+
+#btn:active { 
+	transform: scale(0.98); 
+	/* Scaling button to 0.98 to its original size */ 
+	box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
+	/* Lowering the shadow */ 
+} 
 
 .register-btn{
 	width: 100%;

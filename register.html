@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Skyblue Job Search | Requirement | Hiring </title>
+         <title>Register Form </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -21,11 +21,18 @@
             <link rel="stylesheet" href="assets/css/themify-icons.css">
             <link rel="stylesheet" href="assets/css/slick.css">
             <link rel="stylesheet" href="assets/css/nice-select.css">
-            <link rel = "stylesheet" type = "text/css" href = "assets/css/login.css">
+            <link rel = "stylesheet" type = "text/css" href = "assets/css/register.css">
             <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
    </head>
 
    <body>
+
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    
+
+   
     <header>
         <!-- Header Start -->
        <div class="header-area header-transparrent">
@@ -38,23 +45,34 @@
                                 <a href="https://jobs.skyblue.co.in/"><img class="logo_img" src="https://jobs.skyblue.co.in/images/logo/logo_3.jpg" alt=""></a>
                             </div>  
                         </div>
+
+
                         <div class="col-lg-9 col-md-9">
                             <div class="menu-wrapper">
                                 <!-- Main-menu -->
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
+                                            <!-- <li><a href="index.html">Home</a></li>
                                             <li><a href="../price.html">Price </a></li>
-                                            <li><a href="offer.html">Offer</a></li>
+                                            <li><a href="offer.html">Offer</a></li> -->
                                          
                                         </ul>
                                     </nav>
                                 </div>          
                                 <!-- Header-btn -->
-                                <div class="header-btn d-none f-right d-lg-block">
-                                  <p>For support contact <p style="color: #0174BE;"> +91 8940570614</p></p>
-                                </div>
+                                <!-- <div class="header-btn d-none f-right d-lg-block">
+                                  <p>For support contact
+                                     <p style="color: #0174BE;"> +91 8940570614</p>
+                                    </p>
+                                </div> -->
+
+                                <div class="phone-support-text" style="line-height: 1.5em;
+                                height: 3em;
+                                overflow: hidden;">
+                                  For support contact
+                                       <p style="color: #0174BE; margin-top: 5px;"> +91 8940570614</p>
+                                  </div>
                             </div>
                         </div>
                         <!-- Mobile Menu -->
@@ -68,11 +86,98 @@
         <!-- Header End -->
     </header>
 
+    <div id = "frm">
+        <h3 class="register" style="font-size: 15px;">Enter Mobile No</h3>
 
+        <form class="form" name="form">
+            <p>
+                <input name="mobile" id="mobile" type="text" placeholder="mobile" class="edit" autocomplete="off">
+            </p>
+            
+            <p>
+                <button type="submit" id="btn">Submit</button>
+            </p>
+        </form>
+     </div>
+
+
+     <script>
+
+        const formEl = document.querySelector('.form');
+
+        formEl.addEventListener('submit', event => {
+            event.preventDefault();
+
+            $("#mobile").on('change keydown paste input', function(){
+                  document.getElementById("mobile").className = document.getElementById("mobile").className.replace(" error", ""); // this removes the error class
+             });
+
+            var mobile = document.form.mobile.value;
+
+            if (mobile.length == "") {
+                  document.getElementById("mobile").className = document.getElementById("mobile").className + " error";  // this adds the error class
+                   
+                  
+                  var textbox = document.getElementById("mobile");
+                  textbox.focus();
+                  textbox.scrollIntoView();
+                  return false; 
+           }
+           sendOTP();
+
+            const formData = new FormData(formEl);
+            const data = Object.fromEntries(formData);
+
+            console.log(data);
+        });
+        
+     </script>
+
+     <script>
+
+        // function for send OTP
+function sendOTP() {
+    var number = document.getElementById('mobile').value;
+    firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(function (confirmationResult) {
+        window.confirmationResult = confirmationResult;
+        coderesult = confirmationResult;
+        document.querySelector('.number-input').style.display = 'none';
+        document.querySelector('.verification').style.display = '';
+    }).catch(function (error) {
+        // error in sending OTP
+        alert(error.message);
+    });
+}
+     </script>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
   
-  <!-- JS here -->
-	
-		<!-- All JS Custom Plugins Link Here here -->
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCzvt28IEDpKgI31LkcZjNJN3DBSjNLGW0",
+      authDomain: "skyblue-jobs-web.firebaseapp.com",
+      projectId: "skyblue-jobs-web",
+      storageBucket: "skyblue-jobs-web.appspot.com",
+      messagingSenderId: "840514246144",
+      appId: "1:840514246144:web:2d313fbbb0588175ec2ae5",
+      measurementId: "G-C4QZSK8KCY"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+  
+
+        <!-- Script JS -->
+        <script src="assets/js/auth_script.js"></script>
+
         <script src="https://jobs.skyblue.co.in/assets/js/vendor/modernizr-3.5.0.min.js"></script>
 		<!-- Jquery, Popper, Bootstrap -->
 		<script src="https://jobs.skyblue.co.in/assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -80,32 +185,26 @@
         <script src="https://jobs.skyblue.co.in/assets/js/bootstrap.min.js"></script>
 	    <!-- Jquery Mobile Menu -->
         <script src="https://jobs.skyblue.co.in/assets/js/jquery.slicknav.min.js"></script>
-
 		<!-- Jquery Slick , Owl-Carousel Plugins -->
         <script src="https://jobs.skyblue.co.in/assets/js/owl.carousel.min.js"></script>
         <script src="https://jobs.skyblue.co.in/assets/js/slick.min.js"></script>
         <script src="https://jobs.skyblue.co.in/assets/js/price_rangs.js"></script>
-        
 		<!-- One Page, Animated-HeadLin -->
         <script src="https://jobs.skyblue.co.in/assets/js/wow.min.js"></script>
 		<script src="https://jobs.skyblue.co.in/assets/js/animated.headline.js"></script>
         <script src="https://jobs.skyblue.co.in/assets/js/jquery.magnific-popup.js"></script>
-
 		<!-- Scrollup, nice-select, sticky -->
         <script src="https://jobs.skyblue.co.in/assets/js/jquery.scrollUp.min.js"></script>
         <script src="https://jobs.skyblue.co.in/assets/js/jquery.nice-select.min.js"></script>
 		<script src="https://jobs.skyblue.co.in/assets/js/jquery.sticky.js"></script>
-        
         <!-- contact js -->
         <script src="https://jobs.skyblue.co.in/assets/js/contact.js"></script>
         <script src="https://jobs.skyblue.co.in/assets/js/jquery.form.js"></script>
         <script src="https://jobs.skyblue.co.in/assets/js/jquery.validate.min.js"></script>
         <script src="https://jobs.skyblue.co.in/assets/js/mail-script.js"></script>
         <script src="https://jobs.skyblue.co.in/assets/js/jquery.ajaxchimp.min.js"></script>
-        
 		<!-- Jquery Plugins, main Jquery -->	
         <script src="https://jobs.skyblue.co.in/assets/js/plugins.js"></script>
         <script src="https://jobs.skyblue.co.in/assets/js/main.js"></script>
-        
     </body>
 </html>

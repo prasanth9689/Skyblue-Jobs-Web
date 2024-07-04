@@ -101,20 +101,25 @@
 
      <script>
 
-// document.getElementById("username").className = document.getElementById("username").className + " error";  
-
-
         const formEl = document.querySelector('.form');
 
         formEl.addEventListener('submit', event => {
             event.preventDefault();
 
+            $("#username").on('change keydown paste input', function(){
+                  document.getElementById("username").className = document.getElementById("username").className.replace(" error", ""); // this removes the error class
+             });
+
+             $("#password").on('change keydown paste input', function(){
+                  document.getElementById("password").className = document.getElementById("password").className.replace(" error", ""); // this removes the error class
+             });
+
             var id = document.form.username.value;
-            var ps = document.form.username.value;
+            var ps = document.form.password.value;
 
             if (id.length == "" && ps.length == "") {
                   document.getElementById("username").className = document.getElementById("username").className + " error";  // this adds the error class
-                  document.getElementById("password").className = document.getElementById("password").className + " error";  
+                   
                   
                   var textbox = document.getElementById("username");
                   textbox.focus();
@@ -141,6 +146,7 @@
 
             console.log(data);
         });
+        
      </script>
 
   
