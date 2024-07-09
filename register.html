@@ -23,37 +23,15 @@
             <link rel="stylesheet" href="assets/css/nice-select.css">
             <link rel = "stylesheet" type = "text/css" href = "assets/css/register.css">
             <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+           <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+            <script src="https://www.google.com/recaptcha/api.js"></script>
    </head>
 
    <body>
-
-    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-    
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyCzvt28IEDpKgI31LkcZjNJN3DBSjNLGW0",
-          authDomain: "skyblue-jobs-web.firebaseapp.com",
-          projectId: "skyblue-jobs-web",
-          storageBucket: "skyblue-jobs-web.appspot.com",
-          messagingSenderId: "840514246144",
-          appId: "1:840514246144:web:2d313fbbb0588175ec2ae5",
-          measurementId: "G-C4QZSK8KCY"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-      </script>
       
    
     <header>
@@ -108,23 +86,35 @@
        </div>
         <!-- Header End -->
     </header>
-
+    <div id="show_message"></div>
     <div id = "frm">
-        <h3 class="register" style="font-size: 15px;">Enter Mobile No</h3>
+        <h3 class="register" id="registerText" style="font-size: 15px;">Enter Mobile No</h3>
 
         <form class="form" name="form">
             <p>
-                <input name="mobile" id="mobile" type="text" placeholder="mobile" class="edit" autocomplete="off">
+                <input name="mobile" id="mobile" type="text" value="+918940570614" placeholder="mobile" class="edit" autocomplete="off">
             </p>
+
+            <p style="font-size: 14px; text-align: end; display: none;" id="resend-otp-main">Resend OTP</p>
+
+            <div style=" font-size: 14px; text-align: end;" id="timer-con">
+              <p style="margin-right: 10px;" id="timer">
+              
+              </p>
+            </div>
             
             <p>
                 <button type="submit" id="btn">Submit</button>
             </p>
+
+            <div id="showCapcha"></div>
+            <div id="recaptcha-container"></div>
         </form>
      </div>
 
 
      <script>
+        document.getElementById('timer-con').style.display = 'none';
 
         const formEl = document.querySelector('.form');
 
@@ -146,7 +136,7 @@
                   textbox.scrollIntoView();
                   return false; 
            }
-           sendOTP();
+           phoneSendOTP();
 
             const formData = new FormData(formEl);
             const data = Object.fromEntries(formData);
@@ -156,23 +146,78 @@
         
      </script>
 
-     <script>
+<script>
+    // firebaseConfig is https://console.firebase.google.com/u/0/project/ -> Project setting  { IN TITLE : Your apps }
+    var firebaseConfig = {
+        apiKey: "AIzaSyCzvt28IEDpKgI31LkcZjNJN3DBSjNLGW0",
+          authDomain: "skyblue-jobs-web.firebaseapp.com",
+          projectId: "skyblue-jobs-web",
+          storageBucket: "skyblue-jobs-web.appspot.com",
+          messagingSenderId: "840514246144",
+          appId: "1:840514246144:web:2d313fbbb0588175ec2ae5",
+          measurementId: "G-C4QZSK8KCY"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    // firebase.auth().languageCode = 'th';
 
-        // function for send OTP
-function sendOTP() {
-    var number = document.getElementById('mobile').value;
-    firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(function (confirmationResult) {
-        window.confirmationResult = confirmationResult;
-        coderesult = confirmationResult;
-        document.querySelector('.number-input').style.display = 'none';
-        document.querySelector('.verification').style.display = '';
-    }).catch(function (error) {
-        // error in sending OTP
-        alert(error.message);
-    });
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+
+    function phoneSendOTP() {
+        const phoneNumber = document.getElementById("mobile").value;
+        const appVerifier = window.recaptchaVerifier;
+        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+            .then((confirmationResult) => {
+                console.log(confirmationResult)
+                window.confirmationResult = confirmationResult;
+                document.getElementById('recaptcha-container').style.display = 'none';
+                registerText.innerText = "Enter OTP";
+                $("#mobile").attr("placeholder", "Enter OTP").val("").focus().blur();
+                document.getElementById('timer-con').style.display = 'block';
+                runTimer();
+                var otpSendSuccess = "1";
+                document.getElementById('show_vertify_otp').style.display = 'block';
+            }).catch((error) => {
+                document.getElementById("show_message").innerHTML = "" + error.message
+                console.log(error.message)
+            });
+    }
+
+    function vertify_otp() {
+        const code = document.getElementById("OTP").value;
+        confirmationResult.confirm(code).then((result) => {
+            console.log(result)
+            const user = result.user;
+            alert('OTP VERTIFY : Welcome NEW USER');
+            document.getElementById("show_message").innerHTML = "Verified" 
+        }).catch((error) => {
+            document.getElementById("show_message").innerHTML = "" + error.message
+            console.log(error.message)
+        });
 }
-     </script>
 
+function runTimer(){
+            var timeLeft = 30;
+    var elem = document.getElementById('timer');
+    
+    var timerId = setInterval(countdown, 1000);
+    
+    function countdown() {
+      if (timeLeft == -1) {
+        clearTimeout(timerId);
+        reSendOtpView();
+      } else {
+        elem.innerHTML = 'Re-send OTP  ' + timeLeft + ' Seconds';
+        timeLeft--;
+      }
+    }
+    }
+
+    function reSendOtpView(){
+        document.getElementById('timer-con').style.display = 'none';
+        document.getElementById('resend-otp-main').style.display = 'block';
+    }
+</script>
 
 
         <!-- Script JS -->
