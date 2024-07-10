@@ -95,7 +95,7 @@
                 <input name="mobile" id="mobile" type="text" value="+918940570614" placeholder="mobile" class="edit" autocomplete="off">
             </p>
 
-            <p style="font-size: 14px; text-align: end; display: none;" id="resend-otp-main">Resend OTP</p>
+            <p style="font-size: 14px; text-align: end; display: none; cursor: pointer;" id="resend-otp-main" onclick="onResendOtp()">Resend OTP</p>
 
             <div style=" font-size: 14px; text-align: end;" id="timer-con">
               <p style="margin-right: 10px;" id="timer">
@@ -175,6 +175,7 @@
                 $("#mobile").attr("placeholder", "Enter OTP").val("").focus().blur();
                 document.getElementById('timer-con').style.display = 'block';
                 runTimer();
+                btn.innerText = "Verify OTP"
                 var otpSendSuccess = "1";
                 document.getElementById('show_vertify_otp').style.display = 'block';
             }).catch((error) => {
@@ -216,6 +217,10 @@ function runTimer(){
     function reSendOtpView(){
         document.getElementById('timer-con').style.display = 'none';
         document.getElementById('resend-otp-main').style.display = 'block';
+    }
+
+    function onResendOtp(){
+        alert('Hello');
     }
 </script>
 
