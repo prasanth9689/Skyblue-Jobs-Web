@@ -164,6 +164,11 @@
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
 
     function phoneSendOTP() {
+
+        var otpSendSuccess = "0";
+        alert(otpSendSuccess);
+
+
         const phoneNumber = document.getElementById("mobile").value;
         const appVerifier = window.recaptchaVerifier;
         firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
@@ -176,7 +181,8 @@
                 document.getElementById('timer-con').style.display = 'block';
                 runTimer();
                 btn.innerText = "Verify OTP"
-                var otpSendSuccess = "1";
+                otpSendSuccess = "1";
+                 alert(otpSendSuccess);
                 document.getElementById('show_vertify_otp').style.display = 'block';
             }).catch((error) => {
                 document.getElementById("show_message").innerHTML = "" + error.message
@@ -220,7 +226,9 @@ function runTimer(){
     }
 
     function onResendOtp(){
-        alert('Hello');
+        document.getElementById('timer-con').style.display = 'block';
+        document.getElementById('resend-otp-main').style.display = 'none';
+        runTimer();
     }
 </script>
 
